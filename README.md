@@ -1,100 +1,48 @@
 # WheatherLady_B
 
-Brief description of the system
-As part of the project, a system should be created to collect data from one or preferably two/three weather services (or use files) and provide the average (the result should be a given weather value calculated as the arithmetic average of the results returned by each service) values calculated on the basis of the responses returned.
+Stručný popis systému V rámci projektu by měl být vytvořen systém, který bude shromažďovat údaje z jedné nebo nejlépe dvou/tří meteorologických služeb (nebo používat soubory) a poskytovat průměrné (výsledkem by měla být daná hodnota počasí vypočtená jako aritmetický průměr výsledků vrácených každou službou) hodnoty vypočtené na základě vrácených odpovědí.
 
-Main system functions
-Downloading weather data from relevant web services (or files on your local disc)
-Downloaded data should be saved to the database
-The application should use the city date and location to retrieve average values
-Average results should be saved in the database
-Technologies
-Console application
-JDBC or Hibernate
-Domain logic divided into layers, eg DAO, Service
-Unit testing tools
-Optionally:
+Hlavní funkce systému Stahování dat o počasí z příslušných webových služeb (nebo souborů na lokálním disku) Stažená data by se měla ukládat do databáze Aplikace by měla používat datum a místo města pro získání průměrných hodnot Průměrné výsledky by se měly ukládat do databáze Technologie Konzolová aplikace JDBC nebo Hibernate Doménová logika rozdělená do vrstev, např. DAO, Service Nástroje pro testování jednotek Volitelně:
 
-Http client, e.g. HttpClient, OkHttp
-Application presentation layer based on a pattern, eg MVC/MVP
-JSON data serialization/deserialization tool, eg Gson, Jackson
-dependency injection framework, such as Guice
-JavaFX based frontend
-Functionalities
-User Interface
-Within the console/graphic view, the user should be able to select one of the following options:
+Http klient, např. HttpClient, OkHttp Prezentační vrstva aplikace založená na vzoru, např. MVC/MVP Nástroj pro serializaci/deserializaci dat JSON, např. Gson, Jackson framework pro vstřikování závislostí, např. Guice Frontend založený na JavaFX Funkce Uživatelské rozhraní V rámci konzolového/grafického zobrazení by měl mít uživatel možnost vybrat jednu z následujících možností:
 
-adding specific locations to the database
-displaying currently added locations
-downloading weather values
-Adding a location
-The user should be able to add a location to the database by entering the following values:
+přidání konkrétních míst do databáze zobrazení aktuálně přidaných míst stažení hodnot počasí Přidání místa Uživatel by měl mít možnost přidat místo do databáze zadáním následujících hodnot:
 
-id
-longitude and latitude
-region
-country name
-Additionally, as part of the task, the user should ensure appropriate validation:
+Kromě toho by měl uživatel v rámci úkolu zajistit odpovídající validaci:
 
-id - optional: UUID format
-longitude and latitude according to geographical values ​​(latitude: -90 -> S, 90 -> N, longitude: -180 -> W, 180 -> E)
-city name - cannot be empty
-region - optional: may be null
-Country name - cannot be empty
-If incorrect data are entered, the user should be notified via an appropriate message.
+id - nepovinné: UUID formát zeměpisné délky a šířky podle zeměpisných hodnot (zeměpisná šířka: -90 -> S, 90 -> N, zeměpisná délka: -180 -> W, 180 -> E) název města - nesmí být prázdný region - nepovinné: může být nulový název země - nesmí být prázdný Pokud jsou zadány nesprávné údaje, měl by být uživatel upozorněn prostřednictvím příslušné zprávy.
 
-Display of available locations
-By selecting the menu option, the user should be able to see all locations entered into the database.
+Zobrazení dostupných míst Výběrem možnosti v nabídce by měl mít uživatel možnost zobrazit všechna místa zadaná do databáze.
 
-Downloading weather data
-Downloading weather data from external services
-Under this option, the user should be able to download data from e.g. the following systems:
+Stahování údajů o počasí Stahování údajů o počasí z externích služeb V rámci této možnosti by měl mít uživatel možnost stahovat údaje např. z následujících systémů:
 
-https://openweathermap.org/api
-https://developer.accuweather.com/apis
-https://weatherstack.com/documentation
-Supported parameters
-The user should be able to retrieve the following values:
+https://openweathermap.org/api https://developer.accuweather.com/apis https://weatherstack.com/documentation Podporované parametry Uživatel by měl mít možnost načíst následující hodnoty:
 
-temperature
-pressure
-humidity
-wind direction and speed
-Values ​​taken from external websites should be averaged and saved additionally to the database before being returned to the user.
+teplota tlak vlhkost směr a rychlost větru Hodnoty převzaté z externích webových stránek by měly být zprůměrovány a dodatečně uloženy do databáze, než se vrátí uživateli.
 
-Available download configurations
-The user can indicate the following values ​​via the application:
+Dostupné konfigurace stahování Uživatel může prostřednictvím aplikace zadat následující hodnoty:
 
-DATE
-The request may indicate the date on which the weather is to be checked. If the user does not enter the date in the agreed format, the weather for tomorrow should be checked.
+DATUM V žádosti lze uvést datum, kdy má být počasí zkontrolováno. Pokud uživatel nezadá datum v dohodnutém formátu, má se zkontrolovat počasí na zítřek.
 
-LOCATION
-The request may indicate the location for which the values ​​should be returned. The location should be able to be communicated as city name or a geographic coordinate. Before using it, the location should be saved in the database.
+LOKALITA V požadavku lze uvést lokalitu, pro kterou mají být hodnoty vráceny. Místo by mělo být možné sdělit jako název města nebo zeměpisnou souřadnici. Před použitím by měla být poloha uložena v databázi.
 
-Optional functionalities
-Edit location
-As part of the new menu option, the user should be able to edit the currently added locations. Validation should also be included in the edit.
+Volitelné funkce Upravit umístění V rámci nové možnosti nabídky by měl mít uživatel možnost upravovat aktuálně přidaná umístění. Součástí editace by mělo být také ověření platnosti.
 
-Location search
-The user should be able to display information about a specific location by searching for it, e.g. by name.
+Vyhledávání umístění Uživatel by měl mít možnost zobrazit informace o konkrétním umístění jeho vyhledáním, např. podle názvu.
 
-Statistic data
-The user should be able to display statistical data on selected weather values ​​from a specific time period, e.g. month, year. Data for this purpose should be downloaded directly from the database.
+Statistické údaje Uživatel by měl mít možnost zobrazit statistické údaje o vybraných hodnotách počasí z určitého časového období, např. měsíce, roku. Data pro tento účel by měla být stahována přímo z databáze.
 
-Data write/read
-The user should be able to save the currently collected data to a file in any format, and then restore them by saving directly to the database.
+Zápis/čtení dat Uživatel by měl mít možnost uložit aktuálně shromážděná data do souboru v libovolném formátu a poté je obnovit uložením přímo do databáze.
 
-Unit tests
-The implemented functionalities should be covered with unit tests in accordance with commonly used methodologies and practices.
+Unit testy Implementované funkce by měly být pokryty unit testy v souladu s běžně používanými metodikami a postupy.
 
-NOTE:: Please note that, most probably, you will not be able to write tests for all classes because topics related with mocking has not yet been covered.
+POZNÁMKA:: Upozorňujeme, že s největší pravděpodobností nebude možné napsat testy pro všechny třídy, protože témata související s mockingem ještě nebyla pokryta.
 
-Additional requirements
-The program should meet the following criteria:
+Další požadavky Program by měl splňovat následující kritéria:
 
-functionality
-code quality (transparency, maintainability, structure)
-use of the latest technologies (at least the latest stable version of JDK, the latest stable versions of libraries)
-user experience
-reliability
-The task is formulated very generally on purpose. If something is not specified, it can be implemented in a way that is convenient for the student. There are no preferred solutions or technologies other than those listed.
+funkčnost kvalita kódu (přehlednost, udržovatelnost, struktura) použití nejnovějších technologií (alespoň nejnovější stabilní verze JDK, nejnovější stabilní verze knihoven) spolehlivost uživatelského prostředí Úkol je formulován velmi obecně účelově. Pokud něco není zadáno, lze to implementovat způsobem, který studentovi vyhovuje. Nejsou preferována jiná řešení nebo technologie než ty, které jsou uvedeny.
+
+
+
+
+
