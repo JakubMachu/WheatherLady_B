@@ -2,23 +2,25 @@ package com.example.WheatherLadyTeamBartifact.services;
 
 import com.example.WheatherLadyTeamBartifact.model.City;
 import com.example.WheatherLadyTeamBartifact.repository.CityRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
-public class CityService {
+@RequiredArgsConstructor
+
+public class AddCity {
 
     private final CityRepo cityRepository;
 
-    public CityService(CityRepo cityRepository) {
-        this.cityRepository = cityRepository;
-    }
 
-    public void DeleteEvidence(UUID id){
 
-        cityRepository.delete(cityRepository.getReferenceById(id));
+    public void addCity(String city){
+        City citynew = new City();
+        citynew.setName(city);
+        cityRepository.save(citynew);
+
     }
 
 
 }
+
