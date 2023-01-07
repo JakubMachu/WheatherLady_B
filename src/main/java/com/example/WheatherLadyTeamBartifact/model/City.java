@@ -6,6 +6,9 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,6 +17,6 @@ import lombok.Setter;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     private String name;
 }
