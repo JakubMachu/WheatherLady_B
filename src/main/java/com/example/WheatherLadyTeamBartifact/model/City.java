@@ -1,14 +1,6 @@
 package com.example.WheatherLadyTeamBartifact.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,4 +31,6 @@ public class City {
     @JoinColumn(name = "regionId", foreignKey = @ForeignKey(name = "fk_city_region_id"))
     @JsonIgnore
     private Region region;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Weather weather;
 }

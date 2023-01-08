@@ -4,8 +4,10 @@ import com.example.WheatherLadyTeamBartifact.model.City;
 import com.example.WheatherLadyTeamBartifact.repository.CityRepo;
 import com.example.WheatherLadyTeamBartifact.repository.RegionRepo;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -28,7 +30,8 @@ public class CityService {
     public UUID getIdFromCityName(String cityName) {
         return cityRepository.getCityByName(cityName).getId();
     }
-   public City getCityByCityName(String cityName) {
+
+    public City getCityByCityName(String cityName) {
         return cityRepository.getCityByName(cityName);
     }
 
@@ -37,7 +40,9 @@ public class CityService {
     }
 
     public void updateCity(City city) {
-         cityRepository.saveAndFlush(city);
+        cityRepository.saveAndFlush(city);
+        LocalDate.now().getMonth().toString();
+
     }
 
 
