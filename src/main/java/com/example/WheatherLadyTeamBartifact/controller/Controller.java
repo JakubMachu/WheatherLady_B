@@ -10,10 +10,7 @@ import com.example.WheatherLadyTeamBartifact.services.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,7 +34,7 @@ public class Controller {
         cityService.gettAllCitiesByRegion(cityName);
         return new ResponseEntity<>(cityService.gettAllCitiesByRegion(cityName), HttpStatus.OK);
     }
-    @PostMapping("/del")
+    @DeleteMapping("/del")
     public ResponseEntity delete(@RequestBody String cityName){
         try {
             cityService.deleteEvidence(cityService.getIdFromCityName(cityName));

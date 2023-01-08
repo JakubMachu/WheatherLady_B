@@ -46,10 +46,4 @@ public class WeatherService {
 
 }
 
-//    private UUID weatherId;
-//    private long celsius;
-//    private long precipitationInMillimeters;
-//    private long windSpeed;
-//    private int bioLoad;
-//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-//    private City city;
+
