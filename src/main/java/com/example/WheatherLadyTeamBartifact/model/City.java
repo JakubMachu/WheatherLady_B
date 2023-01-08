@@ -1,8 +1,14 @@
 package com.example.WheatherLadyTeamBartifact.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,10 +19,24 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String name;
+    private Long population;
+
+    public City(String name, Long population) {
+        this.name = name;
+        this.population = population;
+    }
+
+    public City(String name) {
+        this.name = name;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "regionId", foreignKey = @ForeignKey(name = "fk_city_region_id"))
+    @JsonIgnore
+    private Region region;
 }
