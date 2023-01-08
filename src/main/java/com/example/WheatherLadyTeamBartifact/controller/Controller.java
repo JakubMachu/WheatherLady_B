@@ -6,6 +6,7 @@ import com.example.WheatherLadyTeamBartifact.model.DTO.UpdateCityDTO;
 import com.example.WheatherLadyTeamBartifact.repository.CityRepo;
 import com.example.WheatherLadyTeamBartifact.repository.RegionRepo;
 import com.example.WheatherLadyTeamBartifact.services.CityService;
+import com.example.WheatherLadyTeamBartifact.services.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +21,13 @@ public class Controller {
 
     private final CityService cityService;
     private final CityRepo cityRepo;
+    private final WeatherService weatherService;
     private final RegionRepo regionRepo;
 
     @PostMapping("/add")
     public ResponseEntity create(@RequestBody String cityName){
+      weatherService.createWeather();
+
       cityService.addCity(cityName);
         return new ResponseEntity<>("City added", HttpStatus.OK);
     }
