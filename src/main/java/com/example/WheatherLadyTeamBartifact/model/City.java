@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,9 @@ public class City {
     private UUID id;
     private String name;
     private Long population;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Weather weather;
+
 
     public City(String name, Long population) {
         this.name = name;
