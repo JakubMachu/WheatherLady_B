@@ -7,4 +7,6 @@ import lombok.Data;
 public class UpdateCityDTO {
     private String old;
     private String newN;
+    private String reg;
+
 }
